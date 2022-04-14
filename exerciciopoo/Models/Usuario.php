@@ -3,6 +3,11 @@
 namespace Models;
 
 class Usuario {
-      public int $prop;
+      public $nome;
+      public $email;
+      public $senha;
+
+
+      
 }
 

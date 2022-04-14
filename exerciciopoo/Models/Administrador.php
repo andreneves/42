@@ -5,6 +5,9 @@ namespace Models;
 use Models\Usuario as U;
 
 class Administrador extends Usuario {
-      public int $prop;
+      public $cargo;
+      public $departamento;
+
+      
 }
 
