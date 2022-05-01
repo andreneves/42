@@ -26,4 +26,3 @@ create table cliente (
 	foreign key (usuario_id) references usuarios(id)
 );
 
-
