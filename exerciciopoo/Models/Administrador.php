@@ -8,4 +8,3 @@ class Administrador extends Usuario {
       public $cargo;
       public $departamento;
 }
-
