@@ -14,6 +14,12 @@ php artisan optimize
 -- limpando as views do sistema
 php artisan view:clear
 
+-- Faz uma cópia do arquivo (sei que não é composer...)
+cp .env.example .env
+
+-- gerando a app_key no arquivo .env
+php artisan key:generate
+
 -- lista de comandos e versao
 php artisan list
 

@@ -22,3 +22,11 @@ composer  XX --no-scripts
 
 
 --no-cache
+
+
+# atualiza os pacotes
+composer update
+
+# pede um pacote e adiciona ao projeto
+composer require doctrine/dbal
+
