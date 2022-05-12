@@ -103,3 +103,21 @@ php artisan make: policy Policy_Name
 
 Este comando é usado para criar uma nova classe de email.
 php artisan make: mail EMail_Class_Name
+
+Este comando é usado para criar uma nova classe par.
+php artisan make: event Event_Class_Name
+
+Este comando é usado para criar um novo comando artesanal do Laravel
+php artisan make: command Command_Name
+
+Este comando é usado para criar um novo arquivo de migração para o modelo (migração), criar um novo controlador para o modelo (controlador) e ter um controlador de recurso para o controlador gerado.
+php artisan make: model Project –migration –controller –resource
+
+Este comando é usado para criar uma nova classe de ouvinte de eventos.
+php artisan make: ouvinte Event_Listener_Class_Name
+
+Este comando é usado para criar uma nova classe de provedor de serviços.
+php artisan make provider service_provider_name
+
+Este comando é usado para criar uma nova classe de trabalho.
+php artisan make job Job_Name
