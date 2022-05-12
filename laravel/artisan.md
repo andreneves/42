@@ -20,6 +20,9 @@ cp .env.example .env
 -- gerando a app_key no arquivo .env
 php artisan key:generate
 
+-- Criação de um link simbólico com o storage
+php artisan storage:link
+
 -- lista de comandos e versao
 php artisan list
 
