@@ -1,4 +1,4 @@
-## Eloquent
+# Eloquent
 
 
 
@@ -8,7 +8,7 @@
 
 
 
-```
+```php
 if(DB::connection()->getDatabaseName())
 {
 	// Se esta conectado
@@ -18,4 +18,4 @@ if(DB::connection()->getDatabaseName())
 }
 ```
 
-    
+​    
