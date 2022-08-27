@@ -1,18 +1,21 @@
-Artisan
+# Artisan
 
 https://laravel.com/docs/9.x/artisan
 
 
--- Comandos úteis
+## Comandos úteis
 
--- comandos para limpeza de cache e otimizacao
+### comandos para limpeza de cache, config e view
+´´´
 php artisan config:clear
-php artisan config:cache
 php artisan cache:clear
+php artisan view:clear
+´´´
+
+php artisan config:cache
 php artisan optimize
 
 -- limpando as views do sistema
-php artisan view:clear
 
 -- Faz uma cópia do arquivo (sei que não é composer...)
 cp .env.example .env
