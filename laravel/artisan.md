@@ -12,66 +12,115 @@ php artisan cache:clear
 php artisan view:clear
 ```
 
+### Outros comandos
+```
 php artisan config:cache
 php artisan optimize
+```
 
--- limpando as views do sistema
-
--- Faz uma cópia do arquivo (sei que não é composer...)
+### Faz uma cópia do arquivo de exmplo e cria o .ENV
+```
 cp .env.example .env
+```
 
--- gerando a app_key no arquivo .env
+### Gerar a app_key no arquivo .env
+```
 php artisan key:generate
+```
 
--- Criação de um link simbólico com o storage
+### Criação de um link simbólico com o storage
+```
 php artisan storage:link
+```
 
--- lista de comandos e versao
+### Lista de comandos e versao
+```
 php artisan list
+```
 
--- lista todas as ajudas para o Framework.
+### lista todas as ajudas para o Framework.
+```
 php artisan help
+```
 
--- Abre o tinker
+### Abre o tinker
+```
 php artisan tinker
+```
 
-
+### Roda a migrate
+```
 php artisan migrate
+```
 
+### Roda a migrate e seed
+```
 php artisan migrate:refresh --seed
+```
 
--- Controller
+### Controller
 
+#### Cria controller
+```
 php artisan make:controller NomeController
-Controlador com resource (CRUD)
+```
+
+#### Cria controller com resource (CRUD)
+```
 php artisan make:controller AlgumaController --resource
+```
 
--- Model
-php artisan make:model Alguma
-Model com migrate
-php artisan make:model Alguma --migration
+### Model
+```
+php artisan make:model NomeDoModel
+```
 
--- Migrate
+#### Cria Model com migrate
+```
+php artisan make:model NomeDoModel --migration
+```
+
+### Migrate
+```
 php artisan make:migration create_algumas_table
+```
+
+#### Roda a migrate
+```
 php artisan migrate
-Já para ver o status, usamos:
-php artisan migrate:status
-Mostra o status de cada migration.
-php artisan migrate:status
+```
 
--- ROUTES
-Podemos listar todas as rotas utilizando:
+#### Para ver o status de cada migration
+```
+php artisan migrate:status
+```
+
+### ROUTES
+
+#### Podemos listar todas as rotas utilizando:
+```
 php artisan route:list
+```
 
--- MAKE
-cria uma nova classe controller;
+### MAKE
+
+#### Cria uma nova classe controller;
+```
 php artisan make:controller NomeController
-cria uma nova classe model
+```
+
+#### Cria uma nova classe model
+```
 php artisan make:model Nome
-cria um novo arquivo de migração;
+```
+
+#### cria um novo arquivo de migração
+```
 php artisan make:migration
+```
+
 Cria um aquivo de migration chamado add_votes_to_users_table para a alteração de uma tabela chamada users.
-php artisan make:migration add_votes_to_users_table --table=users
+php artisan make:migration add_users_table --table=users
 
 Cria uma nova classe chamada CheckAge.
 php artisan make:middleware CheckAge
