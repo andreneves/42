@@ -6,11 +6,11 @@ https://laravel.com/docs/9.x/artisan
 ## Comandos úteis
 
 ### comandos para limpeza de cache, config e view
-´´´
+'''
 php artisan config:clear
 php artisan cache:clear
 php artisan view:clear
-´´´
+'''
 
 php artisan config:cache
 php artisan optimize
