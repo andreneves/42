@@ -119,6 +119,8 @@ php artisan make:model Nome
 php artisan make:migration
 ```
 
+
+<!-- 
 Cria um aquivo de migration chamado add_votes_to_users_table para a alteração de uma tabela chamada users.
 php artisan make:migration add_users_table --table=users
 
@@ -358,3 +360,4 @@ Publica arquivos públicos de pacotes de terceiros.
 
 php artisan view:clear
 Limpa os arquivos compilados das views.
+-->
