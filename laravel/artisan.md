@@ -70,6 +70,21 @@ php artisan make:controller NomeController
 php artisan make:controller AlgumaController --resource
 ```
 
+#### Cria controller com resource e Model (CRUD)
+```
+php artisan make:controller ProdutoController --resource --model=Produto
+```
+
+
+#### Cria Migration
+```
+php artisan make:migration create_produtos_table
+```
+
+#### Cria seed 
+```
+php artisan make:seeder ProdutoSeeder
+```
 ### Model
 ```
 php artisan make:model NomeDoModel
