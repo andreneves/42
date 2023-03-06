@@ -7,6 +7,11 @@ php artisan cache:clear
 php artisan view:clear
 ```
 
+### Instala dependências
+```
+composer install
+```
+
 ### Faz uma cópia do arquivo de exmplo e cria o .ENV
 ```
 copy .env.example .env
