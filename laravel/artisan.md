@@ -1,6 +1,6 @@
 # Artisan
 
-https://laravel.com/docs/9.x/artisan
+https://laravel.com/docs/10.x/artisan
 
 
 ## Comandos úteis
@@ -20,7 +20,7 @@ php artisan optimize
 
 ### Faz uma cópia do arquivo de exmplo e cria o .ENV
 ```
-cp .env.example .env
+copy .env.example .env
 ```
 
 ### Gerar a app_key no arquivo .env
@@ -103,6 +103,11 @@ php artisan make:migration create_algumas_table
 #### Roda a migrate
 ```
 php artisan migrate
+```
+
+#### Roda o seed
+```
+php artisan db:seed
 ```
 
 #### Para ver o status de cada migration
