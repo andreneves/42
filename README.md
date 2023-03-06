@@ -22,15 +22,6 @@ php artisan key:generate
 php artisan storage:link
 ```
 
-### Roda a migrate
-```
-php artisan migrate
-```
-
-### Roda a migrate e seed
-```
-php artisan migrate:refresh --seed
-```
 
 ### Model
 ```
@@ -62,6 +53,10 @@ php artisan make:seeder ProdutoSeeder
 php artisan db:seed
 ```
 
+### Roda a migrate e seed
+```
+php artisan migrate:refresh --seed
+```
 
 
 
