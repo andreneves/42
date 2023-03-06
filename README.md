@@ -1,13 +1,19 @@
-# aula
+# Código útil
 
-### comandos para limpeza de cache, config e view
+
+### Instalação Laravel
+```
+composer create-project laravel/laravel nome_do_projeto
+```
+
+### Comandos para limpeza de cache, config e view
 ```
 php artisan config:clear
 php artisan cache:clear
 php artisan view:clear
 ```
 
-### Instala dependências
+### Instalação de dependências
 ```
 composer install
 ```
@@ -26,7 +32,6 @@ php artisan key:generate
 ```
 php artisan storage:link
 ```
-
 
 ### Model
 ```
@@ -62,13 +67,6 @@ php artisan db:seed
 ```
 php artisan migrate:refresh --seed
 ```
-
-
-
-
-
-
-
 
 # utilidades
 
