@@ -2,11 +2,66 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Models\Categoria;
+use Illuminate\Foundation\Console\ViewCacheCommand;
+use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+
+
+    /*
+
+	https://laravel.com/docs/8.x/controllers#actions-handled-by-resource-controller
+
+
+    Dicas sobre resouces
+    index - listar todos os itens
+    create - exibe formulario para criacao
+    store - armazena conteudo do formulário para criacao
+    show - exibe um item
+    edit - formulario de edicao de um item
+    update - salva e edicao de um item
+    destroy - exclui um item
+
+
+
+        //index / listar
+        // $produtos = Produto::orderBy('nome', 'ASC')
+        //             ->get();
+        // dd($produtos);
+
+
+        //store / salvar
+        // $produto = new Produto;
+        // $produto->nome  = 'Monitor Ultrawide 36';
+        // $produto->valor = 3000;
+        // $produto->save();
+
+        // dd('Salvou!');
+
+        //show / exibir
+        // $produto = Produto::findOrFail(4);
+        // dd($produto);
+
+        //update / atualizar
+        // $produto = Produto::findOrFail(4);
+        // $produto->nome  = 'Super Monitor Ultrawide 36 plus';
+        // $produto->valor = 5000;
+        // $produto->save();
+
+        // dd('Atualizou!');
+
+        //destroy / excluir
+        $produto = Produto::findOrFail(4);
+        $produto->delete();
+
+        dd('Excluiu!');
+
+    */
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,10 +69,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-
-        //listar todos os produtos
-        $produtos = Produto::orderBy('nome', 'ASC')->get();
-        return view('produto.produto_index', ['produtos' => $produtos]);
+        $produtos = Produto::orderBy('nome', 'ASC')->paginate(2);
+        return view('produto.index', ['produtos' => $produtos]);
     }
 
     /**
@@ -27,7 +80,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produto.produto_create');
+        $categorias = Categoria::orderBy('nome', 'ASC')->pluck('nome', 'id');
+        return view('produto.create', ['categorias' => $categorias]);
     }
 
     /**
@@ -39,24 +93,23 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
 
-        //dd($request->all());
-
         $messages = [
+            'categoria_id.required'  => 'O campo categoria é obrigatorio!',
             'nome.required'  => 'O campo :attribute é obrigatorio!',
             'nome.min'       => 'O :attribute precisa ter no mínimo :min.',
-            'quantidade.required'     => 'O :attribute é obrigatório!',
-            'quantidade.integer'     => 'O :attribute é obrigatória!'
+            'valor.required' => 'O campo :attribute é obrigatorio!',
+            'valor.numeric'  => 'O campo :attribute precisa ser numérico!',
         ];
 
         $validated = $request->validate([
-            'nome'          => 'required|min:8',
-            'quantidade'    => 'required|integer',
-            'valor'         => 'required',
+            'categoria_id'  => 'required',
+            'nome'          => 'required|min:5',
+            'valor'         => 'required|numeric',
         ], $messages);
 
         $produto = new Produto;
+        $produto->categoria_id  = $request->categoria_id;
         $produto->nome          = $request->nome;
-        $produto->quantidade    = $request->quantidade;
         $produto->valor         = $request->valor;
         $produto->save();
 
@@ -67,44 +120,55 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //dd('ENTROU NO SHOW');
-        $produto = Produto::find($id);
-        //dd($produto);
-        return view('produto.produto_show', ['produto' => $produto]);
-
+        $produto = Produto::findOrFail($id);
+        return view('produto.show', ['produto' => $produto]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $produto = Produto::find($id);
-        //dd($produto);
-        return view('produto.produto_edit', ['produto' => $produto]);
+        $categorias = Categoria::orderBy('nome', 'ASC')->pluck('nome', 'id');
+        $produto = Produto::findOrFail($id);
+        return view('produto.edit', ['produto' => $produto, 'categorias' => $categorias]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //dd('UPDATE');
-        $produto = Produto::find($id);
+
+        $messages = [
+            'categoria_id.required'  => 'O campo categoria é obrigatorio!',
+            'nome.required'  => 'O campo :attribute é obrigatorio!',
+            'nome.min'       => 'O :attribute precisa ter no mínimo :min.',
+            'valor.required' => 'O campo :attribute é obrigatorio!',
+            'valor.numeric'  => 'O campo :attribute precisa ser numérico!',
+        ];
+
+        $validated = $request->validate([
+            'categoria_id'  => 'required',
+            'nome' => 'required|min:5',
+            'valor' => 'required|numeric',
+        ], $messages);
+
+        $produto = Produto::findOrFail($id);
+        $produto->categoria_id  = $request->categoria_id;
         $produto->nome          = $request->nome;
-        $produto->quantidade    = $request->quantidade;
         $produto->valor         = $request->valor;
         $produto->save();
 
@@ -115,13 +179,12 @@ class ProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //dd('DESTROY');
-        $produto = Produto::find($id);
+        $produto = Produto::findOrFail($id);
         $produto->delete();
 
         return redirect('/produto')->with('status', 'Produto excluido com sucesso!');
