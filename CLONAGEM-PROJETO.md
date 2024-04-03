@@ -10,6 +10,7 @@ Você precisa ter uma conta ativa no GitHub (https://github.com/)
 - Composer (https://getcomposer.org/download/)
 - Visual Studio Code (https://code.visualstudio.com/)
 - Instalar no Visual Studio Code a extensão Laravel Extension Pack (https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel-extension-pack)
+- Instalar o Material Icon Theme (https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
 - Node (https://nodejs.org/)
 OBS.: Não esqueça de reiniciar o computador
 
